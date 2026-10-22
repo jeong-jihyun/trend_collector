@@ -101,7 +101,7 @@ def github_rising():
     data = json.loads(fetch(url))
     return [
         {
-            "title": f"{r['full_name']} - {(r.get('description') or '')[:80]}",
+            "title": r["full_name"] + (f" - {r['description'][:80]}" if r.get("description") else ""),
             "link": r["html_url"],
             "extra": f"⭐{r['stargazers_count']}",
         }
